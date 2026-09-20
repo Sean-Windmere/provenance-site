@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Provenance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F1E8;
+    --ink:#1B2A45;
+    --ink-soft:#4E5A73;
+    --ink-faint:#867E70;
+    --gold:#8F6B2E;
+    --gold-bright:#A9853F;
+    --gold-soft:#E7DCC2;
+    --line:#D6CDB8;
+    --line-strong:#C1B393;
+    --panel:#16223C;
+    --panel-2:#101B31;
+    --panel-ink:#ECE5D4;
+    --panel-gold:#C9A461;
+    --font-display:'Public Sans','Helvetica Neue',Arial,sans-serif;
+    --font-body:'Spectral','Iowan Old Style',Georgia,'Times New Roman',serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#14171F; --ink:#ECE5D4; --ink-soft:#B2AB95; --ink-faint:#837B6C;
+      --gold:#C9A461; --gold-bright:#DAB878; --gold-soft:#33301F;
+      --line:#2C313D; --line-strong:#3C4350;
+      --panel:#1B2233; --panel-2:#141A28; --panel-ink:#ECE5D4; --panel-gold:#C9A461;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#14171F; --ink:#ECE5D4; --ink-soft:#B2AB95; --ink-faint:#837B6C;
+    --gold:#C9A461; --gold-bright:#DAB878; --gold-soft:#33301F;
+    --line:#2C313D; --line-strong:#3C4350;
+    --panel:#1B2233; --panel-2:#141A28; --panel-ink:#ECE5D4; --panel-gold:#C9A461;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:1.125rem;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--ink);}
+
+  .topbar{background:var(--panel);}
+  .topbar-inner{
+    max-width:40rem;
+    margin:0 auto;
+    padding:0.65rem 1.5rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+  }
+  .topbar-brand{letter-spacing:0.14em;text-transform:uppercase;color:var(--panel-ink);}
+  .topbar-link{
+    color:var(--panel-gold);
+    text-decoration:none;
+    letter-spacing:0.05em;
+    border-bottom:1px solid var(--panel-gold);
+    padding-bottom:1px;
+  }
+  .topbar-link:hover{color:var(--panel-ink);border-color:var(--panel-ink);}
+
+  .wrap{max-width:40rem;margin:0 auto;padding:clamp(2.5rem,6vw,4rem) 1.5rem 4rem;}
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:0.7rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-bottom:0.6rem;
+  }
+  h1{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(1.7rem,4vw,2.2rem);
+    line-height:1.2;
+    letter-spacing:-0.01em;
+    margin:0 0 0.8rem;
+    color:var(--ink);
+  }
+  .lede{color:var(--ink-soft);max-width:32rem;margin:0 0 0.9rem;}
+  .context{
+    font-size:0.95rem;
+    color:var(--ink-faint);
+    max-width:32rem;
+    margin:0 0 2.4rem;
+  }
+
+  .wrap{position:relative;}
+  .accent{
+    position:absolute;
+    right:0;
+    top:0.5rem;
+    width:170px;
+    height:170px;
+    opacity:0.08;
+    pointer-events:none;
+  }
+  .accent::before,.accent::after{
+    content:"";
+    position:absolute;
+    border:1px solid var(--gold);
+    border-radius:50%;
+  }
+  .accent::before{width:150px;height:150px;right:0;top:0;}
+  .accent::after{width:88px;height:88px;right:31px;top:31px;}
+  @media (max-width:720px){.accent{display:none;}}
+
+  form{display:grid;gap:1.15rem;}
+  label{
+    display:block;
+    font-family:var(--font-mono);
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-bottom:0.4rem;
+  }
+  input,textarea{
+    width:100%;
+    font-family:var(--font-body);
+    font-size:1rem;
+    color:var(--ink);
+    background:var(--paper);
+    border:1px solid var(--line-strong);
+    border-radius:2px;
+    padding:0.7rem 0.85rem;
+    line-height:1.5;
+  }
+  input:focus,textarea:focus{
+    outline:none;
+    border-color:var(--gold);
+    box-shadow:0 0 0 3px var(--gold-soft);
+  }
+  textarea{resize:vertical;min-height:8rem;}
+
+  .row2{display:grid;gap:1.15rem;}
+  @media (min-width:520px){.row2{grid-template-columns:1fr 1fr;}}
+
+  button.submit{
+    justify-self:start;
+    margin-top:0.4rem;
+    font-family:var(--font-mono);
+    font-size:0.78rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--panel-ink);
+    background:var(--panel);
+    border:1px solid var(--panel);
+    padding:0.85rem 1.6rem;
+    border-radius:2px;
+    cursor:pointer;
+    transition:background .18s ease,color .18s ease;
+  }
+  button.submit:hover{background:var(--panel-2);}
+  button.submit:disabled{opacity:0.6;cursor:default;}
+
+  .note{
+    margin-top:0.9rem;
+    font-size:0.85rem;
+    color:var(--ink-faint);
+  }
+  .error{color:#B3402B;font-size:0.9rem;margin-top:0.9rem;display:none;}
+
+  .success{
+    display:none;
+    padding:1.6rem;
+    background:var(--gold-soft);
+    border:1px solid var(--line-strong);
+    border-radius:3px;
+  }
+  .success h2{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:1.15rem;
+    margin:0 0 0.5rem;
+    color:var(--ink);
+  }
+  .success p{margin:0;color:var(--ink-soft);}
+
+  .fallback{
+    margin-top:2.6rem;
+    padding-top:1.8rem;
+    border-top:1px solid var(--line);
+    font-family:var(--font-mono);
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    line-height:1.9;
+  }
+  .fallback a{color:var(--ink);border-bottom:1px solid var(--gold);text-decoration:none;}
+  .fallback a:hover{color:var(--gold-bright);}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="topbar-brand">Provenance</span>
+    <a class="topbar-link" href="index.html">Back to site</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="accent" aria-hidden="true"></div>
+  <div class="eyebrow">Contact</div>
+  <h1>Tell us what you're looking into.</h1>
+  <p class="lede">A few lines is plenty. We'll reply directly, usually within one business day.</p>
+  <p class="context">Have a client, question, or potential R&amp;D credit opportunity in mind?</p>
+
+  <form id="contact-form">
+    <div class="row2">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div>
+        <label for="firm">Firm (optional)</label>
+        <input type="text" id="firm" name="firm">
+      </div>
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" required></textarea>
+    </div>
+    <input type="hidden" name="subject" value="New inquiry from oneprovenance.build">
+    <input type="hidden" name="from_name" value="Provenance site contact form">
+    <button type="submit" class="submit">Send Message</button>
+    <div class="error" id="form-error">Something went wrong sending that. Please try again, or email us directly below.</div>
+  </form>
+
+  <div class="success" id="form-success">
+    <h2>Message sent.</h2>
+    <p>Thanks for reaching out — we'll be in touch shortly.</p>
+  </div>
+
+  <div class="fallback">
+    Provenance<br>
+    <a href="mailto:contact@oneprovenance.build">contact@oneprovenance.build</a> &nbsp;&middot;&nbsp; <a href="tel:+19016528591">901.652.8591</a>
+  </div>
+</div>
+
+<script>
+  const ACCESS_KEY = "cd8b4eb8-4f53-4887-851a-5af029ddb09b";
+
+  document.getElementById('contact-form').addEventListener('submit', async function(e){
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('button.submit');
+    const errorEl = document.getElementById('form-error');
+    errorEl.style.display = 'none';
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    const data = new FormData(form);
+    data.append('access_key', ACCESS_KEY);
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: data
+      });
+      const result = await res.json();
+      if (result.success) {
+        form.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } else {
+        throw new Error(result.message || 'Submission failed');
+      }
+    } catch (err) {
+      errorEl.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+    }
+  });
+</script>
+
+</body>
+</html>
