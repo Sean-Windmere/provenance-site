@@ -1,3 +1,6 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
 <title>R&D Signal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="A free, two-minute R&D tax credit assessment. Get a directional read on whether your business's activities may qualify, before you spend anything.">
@@ -637,7 +640,43 @@
 
   <div class="progress-rail"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
 
-  <div id="app"></div>
+  <div id="app"><div class="board"><div class="panel">
+        <div class="eyebrow">Step 1 &middot; About your business</div>
+        <h1 class="q">Let's take a first look at your R&amp;D activity.</h1>
+        <p class="q-sub">Two minutes, a handful of questions. You'll get a directional read on whether it's worth pursuing further, before you spend anything.</p>
+        <div class="field-row">
+          <label for="company">Company name</label>
+          <input type="text" id="company" placeholder="e.g. Ridgeline Farms, or Acme Robotics" value="">
+        </div>
+        <div class="field-row">
+          <label for="industry">Industry</label>
+          <select id="industry">
+            <option value="">Select one&hellip;</option>
+            <option value="software">Software / Technology</option><option value="manufacturing">Manufacturing</option><option value="engineering">Engineering / Architecture</option><option value="agfood">Farming, Food &amp; Beverage</option><option value="construction">Construction / Trades</option><option value="lifesci">Life Sciences / Biotech</option><option value="consumer">Consumer Products / Apparel</option><option value="other">Other</option>
+          </select>
+          <div class="helper-note" style="margin-top:0.8rem;">The R&amp;D credit isn't limited to tech and pharma. Farms improving crop yields, breweries dialing in a new recipe, and manufacturers tweaking a process all commonly qualify too.</div>
+        </div>
+        <div class="nav-row">
+          <span class="step-indicator">Step 1 of 6</span>
+          <button class="btn primary" id="next" disabled="">Begin &rarr;</button>
+        </div>
+      </div>
+    <div class="ledger">
+      <div class="ledger-title"><span><span class="live-dot"></span>Live Estimate</span><span>0/5</span></div>
+      <ul class="tick-list">
+        <li class="tick-empty" style="animation:none;opacity:1;">Nothing marked yet. Answer the questions to see this build.</li>
+      </ul>
+      <div class="subtotal-box">
+        <div class="gauge-wrap">
+          <div class="gauge-label"><span>Unlikely</span><span>Possible</span><span>Likely</span></div>
+          <div class="gauge-track">
+            <div class="gauge-fill" style="width:6%"></div>
+            <div class="gauge-dot" style="left:6%"></div>
+          </div>
+          <div class="gauge-status unlikely">Not Enough Signal Yet</div>
+        </div>
+      </div>
+    </div></div></div>
 
 </div>
 

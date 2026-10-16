@@ -2,11 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://oneprovenance.build/</loc>
+    <lastmod>2026-10-05</lastmod>
   </url>
   <url>
     <loc>https://oneprovenance.build/contact.html</loc>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
     <loc>https://oneprovenance.build/tools/rd-signal.html</loc>
+    <lastmod>2026-10-16</lastmod>
   </url>
 </urlset>
